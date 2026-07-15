@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CV Cá Nhân - Kỹ Sư Nuôi Trồng Thủy Sản</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Roboto:wght@300;400;500;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            font-family: 'Roboto', sans-serif;
+            background-color: #0a192f;
+            color: #e6f1ff;
+            scroll-behavior: smooth;
+            overflow-x: hidden;
+            font-size: 18px; /* Tăng kích cỡ chữ tổng thể */
+        }
+
+        /* Futuristic & Glitch Styling */
+        .futuristic-font {
+            font-family: 'Orbitron', sans-serif;
+            letter-spacing: 2px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            right: 0;
+            height: 100vh;
+            width: 80px;
+            background: rgba(10, 25, 47, 0.85);
+            backdrop-filter: blur(10px);
+            border-left: 2px solid #00d2ff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        nav a {
+            color: #8892b0;
+            text-decoration: none;
+            margin: 20px 0;
+            writing-mode: vertical-rl;
+            text-transform: uppercase;
+            font-size: 14px;
+            font-family: 'Orbitron', sans-serif;
+            transition: all 0.3s;
+            padding: 10px 5px;
+            border-right: 2px solid transparent;
+        }
+
+        nav a:hover, nav a.active {
+            color: #00d2ff;
+            border-right: 2px solid #00d2ff;
+            text-shadow: 0 0 10px #00d2ff;
+        }
+
+        /* Section structure - Each on a Separate Page */
+        section {
+            width: calc(100vw - 80px);
+            min-height: 100vh;
+            padding: 80px 60px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            position: relative;
+            border-bottom: 1px solid rgba(0, 210, 255, 0.1);
+            background: linear-gradient(135deg, #0a192f 0%, #0f3460 100%);
+        }
+
+        section:nth-child(even) {
+            background: linear-gradient(135deg, #0f3460 0%, #0a192f 100%);
+        }
+
+        .section-title {
+            font-size: 2.5rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            border-left: 5px solid #00d2ff;
+            padding-left: 15px;
+            text-shadow: 0 0 15px rgba(0, 210, 255, 0.5);
+        }
+
+        /* Page 1: Hero / Home & Personal Info */
+        #home {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            padding-top: 40px;
+        }
+
+        .hero-text-container {
+            width: 55%;
+            z-index: 2;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            font-weight: 900;
+            color: #00d2ff;
+            text-shadow: 3px 3px 0px #ff007f;
+            margin-bottom: 10px;
+            animation: glitch 3s infinite;
+        }
+
+        .sub-title {
+            font-size: 1.8rem;
+            color: #ffffff;
+            margin-bottom: 40px;
+        }
+
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 25px;
+            background: rgba(255, 255, 255, 0.05);
+            padding: 30px;
+            border-radius: 8px;
+            border: 1px solid rgba(0, 210, 255, 0.2);
+        }
+
+        .info-item {
+            font-size: 1.2rem;
+        }
+
+        .info-item strong {
+            color: #00d2ff;
+            display: block;
+            margin-bottom: 5px;
+            font-family: 'Orbitron', sans-serif;
+        }
+
+        .image-container {
+            width: 40%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+        }
+
+        .image-container img {
+            width: 100%;
+            max-width: 500px;
+            border-radius: 12px;
+            border: 3px solid #00d2ff;
+            box-shadow: 0 0 30px rgba(0, 210, 255, 0.4);
+            object-fit: cover;
+            aspect-ratio: 16/9;
+        }
+
+        /* Cards Layout for Education, Experience, Activities */
+        .card-timeline {
+            position: relative;
+            border-left: 2px solid #00d2ff;
+            padding-left: 30px;
+            margin-left: 15px;
+        }
+
+        .cv-card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(0, 210, 255, 0.1);
+            padding: 30px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+            position: relative;
+            transition: all 0.3s;
+        }
+
+        .cv-card:hover {
+            background: rgba(255, 255, 255, 0.07);
+            border-color: #00d2ff;
+            transform: translateX(10px);
+            box-shadow: 0 0 20px rgba(0, 210, 255, 0.2);
+        }
+
+        .cv-card::before {
+            content: '';
+            position: absolute;
+            left: -41px;
+            top: 35px;
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #0a192f;
+            border: 4px solid #00d2ff;
+        }
+
+        .card-time {
+            font-family: 'Orbitron', sans-serif;
+            color: #ff007f;
+            font-size: 1.2rem;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .card-header-title {
+            font-size: 1.6rem;
+            color: #ffffff;
+            margin-bottom: 5px;
+        }
+
+        .card-subtitle {
+            color: #00d2ff;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+        }
+
+        .card-details {
+            color: #8892b0;
+            line-height: 1.6;
+            font-size: 1.15rem;
+        }
+
+        /* Skills Layout */
+        .skills-container {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            max-width: 900px;
+        }
+
+        .skill-bar-wrapper {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 25px;
+            border-radius: 8px;
+            border-left: 4px solid #00d2ff;
+        }
+
+        .skill-name {
+            font-size: 1.3rem;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        /* Objective Layout */
+        .objective-box {
+            background: rgba(0, 210, 255, 0.05);
+            border: 2px dashed #00d2ff;
+            padding: 40px;
+            border-radius: 12px;
+            max-width: 1000px;
+            line-height: 1.8;
+            font-size: 1.4rem;
+            text-align: justify;
+            box-shadow: inset 0 0 20px rgba(0, 210, 255, 0.1);
+        }
+
+        /* Animations */
+        @keyframes glitch {
+            0% { text-shadow: 3px 3px 0px #ff007f, -3px -3px 0px #00d2ff; }
+            14% { text-shadow: 3px 3px 0px #ff007f, -3px -3px 0px #00d2ff; }
+            15% { text-shadow: -5px 2px 0px #ff007f, 3px -2px 0px #00d2ff; }
+            16% { text-shadow: 3px 3px 0px #ff007f, -3px -3px 0px #00d2ff; }
+            100% { text-shadow: 3px 3px 0px #ff007f, -3px -3px 0px #00d2ff; }
+        }
+
+        /* Responsive Layout */
+        @media (max-width: 1024px) {
+            #home {
+                flex-direction: column-reverse;
+                justify-content: center;
+            }
+            .hero-text-container, .image-container {
+                width: 100%;
+            }
+            .image-container {
+                margin-bottom: 40px;
+            }
+            section {
+                width: 100vw;
+                padding: 60px 25px;
+            }
+            nav {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Sidelink Navigation for Pages -->
+    <nav>
+        <a href="#home" class="active">Thông tin</a>
+        <a href="#education">Học vấn</a>
+        <a href="#skills">Kỹ năng</a>
+        <a href="#experience">Kinh nghiệm</a>
+        <a href="#objective">Mục tiêu</a>
+        <a href="#activities">Hoạt động</a>
+    </nav>
+
+    <!-- Page 1: Thông tin cá nhân -->
+    <section id="home">
+        <div class="hero-text-container">
+            <h1 class="main-title futuristic-font">KỸ SƯ NUÔI TRỒNG THỦY SẢN</h1>
+            <h2 class="sub-title futuristic-font">NGUYỄN VĂN AN</h2>
+            
+            <div class="info-grid">
+                <div class="info-item"><strong>Ngày sinh</strong> 01/01/2002</div>
+                <div class="info-item"><strong>Giới tính</strong> Nam</div>
+                <div class="info-item"><strong>Điện thoại</strong> 0987.654.321</div>
+                <div class="info-item"><strong>Email</strong> an.b2001000@student.ctu.edu.vn</div>
+                <div class="info-item" style="grid-column: span 2;"><strong>Địa chỉ</strong> Đại học Cần Thơ, Đường 3/2, Xuân Khánh, Ninh Kiều, Cần Thơ</div>
+            </div>
+        </div>
+        <div class="image-container">
+            <img src="watermarked_img_15634274172968353552.png" alt="Aquaculture Engineer">
+        </div>
+    </section>
+
+    <!-- Page 2: Học vấn -->
+    <section id="education">
+        <h2 class="section-title futuristic-font">Học vấn</h2>
+        <div class="card-timeline">
+            
+            <div class="cv-card">
+                <div class="card-time">2020 - 2024</div>
+                <h3 class="card-header-title">Trường Thủy sản - Đại học Cần Thơ (CTU)</h3>
+                <div class="card-subtitle">Ngành Nuôi trồng Thủy sản</div>
+                <p class="card-details">Tốt nghiệp loại Giỏi. Nghiên cứu chuyên sâu về hệ thống tuần hoàn RAS, quản lý chất lượng nước và dinh dưỡng đối tượng thủy sản.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Page 3: Kỹ năng -->
+    <section id="skills">
+        <h2 class="section-title futuristic-font">Kỹ năng chuyên môn</h2>
+        <div class="skills-container">
+            
+            <div class="skill-bar-wrapper">
+                <div class="skill-name">Vận hành hệ thống nuôi thủy sản công nghệ cao (RAS, Biofloc)</div>
+            </div>
+            
+            <div class="skill-bar-wrapper">
+                <div class="skill-name">Phân tích và kiểm soát chất lượng nước tiêu chuẩn LAB</div>
+            </div>
+            
+            <div class="skill-bar-wrapper">
+                <div class="skill-name">Chẩn đoán và điều trị bệnh học thủy sản (tôm cá)</div>
+            </div>
+            
+            <div class="skill-bar-wrapper">
+                <div class="skill-name">Quản lý dinh dưỡng và chế biến thức ăn thủy sản</div>
+            </div>
+            
+            <div class="skill-bar-wrapper">
+                <div class="skill-name">Tin học văn phòng, phần mềm phân tích thống kê (SPSS, R)</div>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Page 4: Kinh nghiệm -->
+    <section id="experience">
+        <h2 class="section-title futuristic-font">Kinh nghiệm làm việc</h2>
+        <div class="card-timeline">
+            
+            <div class="cv-card">
+                <div class="card-time">06/2023 - 12/2023</div>
+                <h3 class="card-header-title">Thực tập sinh Kỹ thuật</h3>
+                <div class="card-subtitle">Trung tâm Nghiên cứu và Phát triển Thủy sản Công nghệ cao CTU</div>
+                <p class="card-details">Quản lý hệ thống ương tôm thẻ chân trắng siêu thâm canh, theo dõi các chỉ tiêu môi trường nước hàng ngày, lập báo cáo tăng trưởng.</p>
+            </div>
+            
+            <div class="cv-card">
+                <div class="card-time">01/2024 - Hiện tại</div>
+                <h3 class="card-header-title">Kỹ thuật viên Trại nuôi</h3>
+                <div class="card-subtitle">Dự án liên kết thực nghiệm Thủy sản Cần Thơ</div>
+                <p class="card-details">Ứng dụng các chế phẩm sinh học xử lý nước, tối ưu hóa FCR trong quy trình nuôi cá tra thương phẩm.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <!-- Page 5: Mục tiêu nghề nghiệp -->
+    <section id="objective">
+        <h2 class="section-title futuristic-font">Mục tiêu nghề nghiệp</h2>
+        <div class="objective-box">
+            <p>Trở thành một chuyên gia kỹ thuật hàng đầu trong lĩnh vực nuôi trồng thủy sản ứng dụng công nghệ cao. Đóng góp kiến thức chuyên môn để tối ưu hóa quy trình nuôi bền vững, giảm thiểu tác động môi trường và nâng cao năng suất thủy hải sản Việt Nam.</p>
+        </div>
+    </section>
+
+    <!-- Page 6: Hoạt động -->
+    <section id="activities">
+        <h2 class="section-title futuristic-font">Hoạt động ngoại khóa</h2>
+        <div class="card-timeline">
+            
+            <div class="cv-card">
+                <h3 class="card-header-title" style="color: #00d2ff; margin-bottom: 10px;">Thành viên CLB Khởi nghiệp Thủy sản CTU</h3>
+                <p class="card-details">Tham gia nghiên cứu đề tài ứng dụng IoT trong giám sát ao nuôi tự động.</p>
+            </div>
+            
+            <div class="cv-card">
+                <h3 class="card-header-title" style="color: #00d2ff; margin-bottom: 10px;">Chiến dịch Mùa hè xanh Đại học Cần Thơ</h3>
+                <p class="card-details">Hỗ trợ chuyển giao kỹ thuật nuôi cá ao bờ cho hộ dân tại các vùng khó khăn vùng ĐBSCL.</p>
+            </div>
+            
+        </div>
+    </section>
+
+    <script>
+        // Simple Navigation Highlighting on Scroll
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('nav a');
+
+        window.addEventListener('scroll', () => {
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - sectionHeight / 3)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(a => {
+                a.classList.remove('active');
+                if (a.getAttribute('href').slice(1) === current) {
+                    a.classList.add('active');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
